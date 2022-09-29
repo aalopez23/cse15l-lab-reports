@@ -16,9 +16,9 @@
 
 Horizontal rule:
 ---
-'public static void main(String args[])' with back ticks 
-'''
-#code block
+`public static void main(String args[])` with back ticks 
+```
+# code block
 print '3 backticks or'
 print 'indent 4 spaces'
-'''
+```
