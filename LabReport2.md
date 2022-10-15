@@ -1,42 +1,78 @@
-# Week 1 Lab Report
-**Installing VScode**
+# Week 3 Lab Report
 
-![](Screen%20Shot%202022-09-29%20at%209.46.32%20AM.png)
-1. Search up Vscode on internet browser
-2. Follow instructions to download and install on your computer
+## Part 1
+**Simplest Search Engine**
+```
+class Handler implements URLHandler {
+    // The one bit of state on the server: a number that will be manipulated by
+    // various requests.
+    int num = 0;
 
-**Remotely Connecting**
+    public String handleRequest(URI url) {
+        ArrayList<String> num = new ArrayList<String>();
+        if (url.getPath().equals("/")) {
+            return String.format("item: %d", inputs.toString());
+        } else {
+            System.out.println("Path: " + url.getPath());
+            if (url.getPath().contains("/add")) {
+                String[] parameters = url.getQuery().split("=");
+                if (parameters[0].equals("d")) {
+                    num.add(parameters[1]);
+                    return String.format("item %d added", parameters[1]);
+                }
+            }
+            return "404 Not Found!";
+        }
+    }
+}
 
-![](Screen%20Shot%202022-09-29%20at%2012.22.26%20PM.png)
-1. Open VsCode terminal and login to server using command 
-`ssh cs15lfa22zz@ieng6.ucsd.edu`
-2. Type in password (you will not be able to see your text)
+class SearchEngine {
+    public static void main(String[] args) throws IOException {
+        if(args.length == 0){
+            System.out.println("Missing port number! Try any number between 1024 to 49151");
+            return;
+        }
+    
+        int port = Integer.parseInt(args[0]);
+    
+        Server.start(port, new Handler2());
+    }
+}
+```
+<img width="564" alt="Screen Shot 2022-10-14 at 10 08 05 PM" src="https://user-images.githubusercontent.com/114641719/195970159-7c3fef51-d68d-4ed3-9000-766d90993548.png">
+<img width="331" alt="Screen Shot 2022-10-14 at 10 09 54 PM" src="https://user-images.githubusercontent.com/114641719/195970163-ad84e547-71b7-46f1-8406-6e8db86bcfc7.png">
 
-**Trying Some Commands**
+1. I called add cat and add dog
+2. Called the methods in Handlerequest() to add to the query
+3. if those values were to change they would add new values to the item list.
 
-![](Screen%20Shot%202022-09-29%20at%201.01.13%20PM.png)
-1. Try running some commands on your remote computer as you would on your local system
-2. `cp /home/linux/ieng6/cs15lfa22/public/hello.txt ~/` To Copy file 
-3. `cat /home/linux/ieng6/cs15lfa22/public/hello.txt` To Paste File
+## Part 2
 
-**Moving Files with scp** 
-![](Screen%20Shot%202022-09-29%20at%201.30.36%20PM.png)
-1. Create a file with whatever contents ex. `WhereAmI.java`
-2. Run Command `scp WhereAmI.java cs15lfa22zz@ieng6.ucsd.edu:~/` to copy file on to remote system
-3. Compile and run using `javac WhereAmI.java; java WhereAmI`
+**Array Methods Bug**
 
-**Setting an SSH Key**
-![](Screen%20Shot%202022-09-29%20at%201.40.07%20PM.png)
-1. Creates a pair of files public key and private key for easier login
-2. Call command `ssh-keygen` 
-3. Remember the key in which the file was saved ex. `/Users/joe/ .ssh/id_rsa`
-4. Call command `ssh cs15lfa22dt@ieng6.ucsd.edu` and enter password
-5. On server call `mkdir.ssh` and logout
-6. Call command 
-`scp /Users/joe/.ssh/id_rsa.pub cs15lfa22@ieng6.ucsd.edu:~/.ssh/authorized_keys`
+<img width="340" alt="Screen Shot 2022-10-13 at 9 05 24 AM" src="https://user-images.githubusercontent.com/114641719/195964339-2a38b96d-c6f6-4d8a-94f7-51fa786b0d75.png">
+1. The following shows the input for the test cases
 
-**Optimizing Remote Running**
-![](Screen%20Shot%202022-09-29%20at%201.53.01%20PM.png)
-1. You can run multiple commands at once 
-2. In one line; save file to remote computer and compile and run it remotely.
-3. Using command `ssh cs15lfa22dt@ieng6.ucsd.edu; ssh cs15lfa22dt@ieng6.ucsd.edu "javac WhereAmI.java; java WhereAmI"`
+2. There were bugs in reverse in place and reversed when using something with multiple inputs.
+
+testReverseLargerArrays(ArrayTests)
+arrays first differed at element [2]; expected:<1> but was:<3>
+ArrayTests.testReverseLargerArrays(ArrayTests.java:23)
+        ... 32 trimmed
+Caused by: java.lang.AssertionError: expected:<1> but was:<3>
+
+
+3. The bugs were the following; 
+In the reverse in place function there was a bug because when reversing the function through the same array the code would mess up the inputs before it was done reversing itself. To do this we would need a temp array that could save a database of the original array and use that to change the original way without the original array corrupting itself.
+In the reverse function the bug was it would change the original array instead of the new array. It would pull from the new array to change the original array. To top it off it returned the original array instead of the new one. 
+
+**List Method Bug**
+
+<img width="425" alt="Screen Shot 2022-10-13 at 9 46 40 AM" src="https://user-images.githubusercontent.com/114641719/195964494-baaca8f8-e9e9-4226-8704-19e5e0b38d77.png">
+
+1. The following shows the input in place for the test cases
+ 
+2. The only bug was an implementation error in the list method
+3. The bug was in the code was in the wrong order
+
+
