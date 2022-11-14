@@ -1,57 +1,22 @@
 # Lab Report 4
 
 ## Part 1
-**Simplest Search Engine**
+**Changing the Name of the start paramater and its uses to base**
+<img width="992" alt="Screen Shot 2022-11-14 at 11 28 21 AM" src="https://user-images.githubusercontent.com/114641719/201748494-15cee982-9860-4df2-bc79-989a6d38812f.png">
 
-<img width="564" alt="Screen Shot 2022-10-14 at 10 08 05 PM" src="https://user-images.githubusercontent.com/114641719/195970159-7c3fef51-d68d-4ed3-9000-766d90993548.png">
-<img width="331" alt="Screen Shot 2022-10-14 at 10 09 54 PM" src="https://user-images.githubusercontent.com/114641719/195970163-ad84e547-71b7-46f1-8406-6e8db86bcfc7.png">
+1.Vim DocSearchServer.java <Enter>
+2./start <Enter>
+3.Dw <Enter>
+4.i <Enter>
+5.base <enter> <esc>
+6.N <Enter>
+7.base <Enter>
+8.<esc> :wq <Enter>
 
-1. I called add cat and add dog
-2. Called the methods in Handlerequest() to add to the query
-3. if those values were to change they would add new values to the item list.
 
 ## Part 2
 
-**Array Methods Bug**
+<img width="826" alt="Screen Shot 2022-11-14 at 11 34 48 AM" src="https://user-images.githubusercontent.com/114641719/201749779-f3cf71ff-780e-4993-bb93-39003e289a6f.png">
 
-<img width="340" alt="Screen Shot 2022-10-13 at 9 05 24 AM" src="https://user-images.githubusercontent.com/114641719/195964339-2a38b96d-c6f6-4d8a-94f7-51fa786b0d75.png">
-1. The following shows the input for the test cases
-
-2. There were bugs in reverse in place and reversed when using something with multiple inputs.
-
-testReverseLargerArrays(ArrayTests)
-arrays first differed at element [2]; expected:<1> but was:<3>
-ArrayTests.testReverseLargerArrays(ArrayTests.java:23)
-        ... 32 trimmed
-Caused by: java.lang.AssertionError: expected:<1> but was:<3>
-
-
-3. The bugs were the following; 
-In the reverse in place function there was a bug because when reversing the function through the same array the code would mess up the inputs before it was done reversing itself. To do this we would need a temp array that could save a database of the original array and use that to change the original way without the original array corrupting itself.
-In the reverse function the bug was it would change the original array instead of the new array. It would pull from the new array to change the original array. To top it off it returned the original array instead of the new one. 
-
-**List Method Bug**
-
-<img width="425" alt="Screen Shot 2022-10-13 at 9 46 40 AM" src="https://user-images.githubusercontent.com/114641719/195964494-baaca8f8-e9e9-4226-8704-19e5e0b38d77.png">
-
-1. The following shows the input in place for the test cases
- 
-2. The only bug was an implementation error in the list method
-3. The bug was in the code was in the wrong order
-
-
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-cse15l-lab-reports/LabReport2.md at main · aalopez23/cse15l-lab-reports
+1. If i was working on a file remotely I would probably prefer the method where I do the work on my machine locally. Just so I can make sure the file works and I dont break existing code.
+2. If i was working with a smaller file I would feel more comfortable working on the file remotely and it would be the more efficient method time wise.
